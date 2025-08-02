@@ -1,8 +1,10 @@
 package com.automationteststore.tests;
 
 import com.automationteststore.components.HeaderComponent;
+import com.automationteststore.model.Product;
 import com.automationteststore.pages.CartPage;
 import com.automationteststore.pages.ProductPage;
+import com.automationteststore.service.ProductCreator;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -11,17 +13,23 @@ public class CartTests extends BaseTest{
     @Test
     public void verifyUserCanAddProductToCart(){
         SoftAssert softAssert = new SoftAssert();
-        homePage.selectCategory("BOOKS");
-        homePage.selectSubCategory("Paperback");
-        ProductPage product = homePage.selectProduct("ALLEGIANT BY VERONICA ROTH");
-        product.addToCart();
+
+        Product expectedProduct = ProductCreator.createProduct();
+
+        homePage.selectCategory(expectedProduct.getCategory());
+        homePage.selectSubCategory(expectedProduct.getSubCategory());
+
+        ProductPage productPage = homePage.selectProduct(expectedProduct.getName());
+        productPage.addToCart();
+
         HeaderComponent header = homePage.getHeaderComponent();
         CartPage cartPage = header.clickCart();
-        String productTitle = cartPage.getProductTitle();
-        String productPrice = cartPage.getProductPrice();
 
-        softAssert.assertEquals(productTitle, "Allegiant by Veronica Roth", "The Product Title is incorrect");
-        softAssert.assertEquals(productPrice, "$7.99", "The Product Price is incorrect");
+        String actualTitle = cartPage.getProductTitle();
+        String actualPrice = cartPage.getProductPrice();
+
+        softAssert.assertEquals(actualTitle, "Allegiant by Veronica Roth", "The Product Title is incorrect");
+        softAssert.assertEquals(actualPrice, "$" + expectedProduct.getPrice(), "The Product Price is incorrect");
         softAssert.assertAll();
     }
 }
