@@ -54,3 +54,33 @@ A user account with valid credentials already exists.
 - TestNG
 - Page Object Model (POM)
 - Maven
+
+## Framework Features
+
+This test automation framework was enhanced as part of the **Hardcore task** from the WebDriver course.  
+The framework includes the following capabilities:
+
+-  **WebDriverManager** for browser driver management.
+-  **Page Object** pattern for better test structure and maintainability.
+-  **Business objects** representing key domain models used in test flows.
+-  **Property files** for environment-specific test data (`dev`, `qa`).
+-  **TestNG XML suites** to group and execute Smoke and Regression tests separately.
+-  **Automatic screenshots** captured on test failure, with screenshot paths logged.
+-  **Flexible test parameters**, such as browser type and target environment, configurable via the command line.
+
+## Logging
+
+The framework uses a logging solution (Log4j2) with the following configuration:
+
+- Logs support multiple levels: `DEBUG`, `INFO`, `ERROR`.
+- Output is written both to the **console** and to **daily log files**.
+- Each test step and significant event is logged for traceability and debugging.
+- Screenshot file paths (in case of failures) are included in the logs.
+
+## How to Run Tests
+
+You can run the tests using Maven with custom parameters for browser, environment, and test suite.  
+Use the following command as a template:
+
+```bash
+   mvn clean test -Dbrowser=<browser> -Denvironment=<env> -DsuiteXmlFile=<path-to-suite>
