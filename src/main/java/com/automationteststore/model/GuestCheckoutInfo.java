@@ -1,14 +1,14 @@
 package com.automationteststore.model;
 
 public class GuestCheckoutInfo {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String address;
-    private String city;
-    private String region;
-    private String zipCode;
-    private String country;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
+    private final String address;
+    private final String city;
+    private final String region;
+    private final String zipCode;
+    private final String country;
 
     public GuestCheckoutInfo(String firstName, String lastName, String email,
                              String address, String city, String zipCode,

@@ -1,6 +1,6 @@
 package com.automationteststore.pages;
 
-import com.automationteststore.core.BasePage;
+import com.automationteststore.core.base.BasePage;
 import com.automationteststore.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

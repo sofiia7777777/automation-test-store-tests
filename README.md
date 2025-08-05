@@ -84,3 +84,28 @@ Use the following command as a template:
 
 ```bash
    mvn clean test -Dbrowser=<browser> -Denvironment=<env> -DsuiteXmlFile=<path-to-suite>
+```
+
+## Design Patterns Implementation
+
+This project includes implementation of several design patterns aimed at improving code maintainability, scalability, and readability. The following patterns have been applied in different areas of the code:
+
+### Singleton
+The Singleton pattern is used to ensure that only one instance of the WebDriver exists throughout the test execution.
+- Implemented in the `DriverSingleton` class, which manages the lifecycle of the WebDriver instance.
+
+### Factory Method
+The Factory Method pattern is used to abstract the creation of WebDriver objects based on the browser type.
+- Implemented in the `BrowserFactory` class, which creates and returns appropriate WebDriver instances such as ChromeDriver or FirefoxDriver.
+
+### Decorator
+The Decorator pattern is applied to add logging functionality to UI actions without modifying the original behavior.
+- Implemented by defining a `UIActions` interface, a `DefaultUIActions` concrete class, and a `LoggingUIActionsDecorator` that wraps UI actions to provide logging.
+
+### Facade (Bonus)
+The Facade pattern simplifies complex interactions involving multiple page objects during the guest checkout process.
+- Implemented in the `CheckoutFacade` class, which encapsulates the entire flow from cart to order confirmation into a single method.
+
+---
+
+These patterns have been integrated and are actively used during test execution to demonstrate proper design principles and enhance code quality.

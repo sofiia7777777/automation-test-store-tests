@@ -1,6 +1,6 @@
-package com.automationteststore.pages;
+package com.automationteststore.pages.checkout;
 
-import com.automationteststore.core.BasePage;
+import com.automationteststore.core.base.BasePage;
 import com.automationteststore.model.GuestCheckoutInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,7 +23,6 @@ public class GuestCheckoutFormPage extends BasePage {
         inputText(By.id("guestFrm_email"), info.getEmail());
         inputText(By.id("guestFrm_address_1"), info.getAddress());
         inputText(By.id("guestFrm_city"), info.getCity());
-
         inputText(By.id("guestFrm_postcode"), info.getZipCode());
 
         Select countrySelect = new Select(find(By.id("guestFrm_country_id")));

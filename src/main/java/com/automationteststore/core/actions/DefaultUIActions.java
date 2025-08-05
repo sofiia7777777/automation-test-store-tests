@@ -1,4 +1,4 @@
-package com.automationteststore.core;
+package com.automationteststore.core.actions;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,29 +8,33 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public abstract class BaseUIObject {
-    protected WebDriver driver;
+public class DefaultUIActions implements UIActions{
+    private WebDriver driver;
     private static final int DEFAULT_TIMEOUT = 7;
     private static final int FLUENT_WAIT_TIMEOUT = 15;
     private static final int FLUENT_WAIT_POLLING = 500;
 
-    protected BaseUIObject(WebDriver driver) {
+    public DefaultUIActions(WebDriver driver) {
         this.driver = driver;
     }
 
-    protected WebElement find(By locator) {
+    @Override
+    public WebElement find(By locator) {
         return driver.findElement(locator);
     }
 
-    protected void click(By locator) {
+    @Override
+    public void click(By locator) {
         waitForElementToBeClickable(locator).click();
     }
 
-    protected void inputText(By locator, String text) {
+    @Override
+    public void inputText(By locator, String text) {
         waitForElementToBeVisible(locator).sendKeys(text);
     }
 
-    protected String getText(By locator) {
+    @Override
+    public String getText(By locator) {
         return waitForElementToBeVisible(locator).getText();
     }
 
@@ -44,15 +48,16 @@ public abstract class BaseUIObject {
         return getWait(DEFAULT_TIMEOUT);
     }
 
-    protected WebElement waitForElementToBeVisible(By locator) {
+    private WebElement waitForElementToBeVisible(By locator) {
         return getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    protected WebElement waitForElementToBeClickable(By locator) {
+    private WebElement waitForElementToBeClickable(By locator) {
         return getWait().until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    protected WebElement waitForElementToLoad(By locator) {
+    @Override
+    public WebElement waitForElementToLoad(By locator) {
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(FLUENT_WAIT_TIMEOUT))
                 .pollingEvery(Duration.ofMillis(FLUENT_WAIT_POLLING))

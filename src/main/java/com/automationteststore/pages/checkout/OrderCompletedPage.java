@@ -1,6 +1,6 @@
-package com.automationteststore.pages;
+package com.automationteststore.pages.checkout;
 
-import com.automationteststore.core.BasePage;
+import com.automationteststore.core.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

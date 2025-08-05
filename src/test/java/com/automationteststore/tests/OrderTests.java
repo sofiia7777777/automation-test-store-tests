@@ -1,9 +1,13 @@
 package com.automationteststore.tests;
 
-import com.automationteststore.components.HeaderComponent;
+import com.automationteststore.facades.CheckoutFacade;
 import com.automationteststore.model.GuestCheckoutInfo;
 import com.automationteststore.model.Product;
 import com.automationteststore.pages.*;
+import com.automationteststore.pages.checkout.CheckoutConfirmationPage;
+import com.automationteststore.pages.checkout.CheckoutEntryPage;
+import com.automationteststore.pages.checkout.GuestCheckoutFormPage;
+import com.automationteststore.pages.checkout.OrderCompletedPage;
 import com.automationteststore.service.GuestCheckoutInfoCreator;
 import com.automationteststore.service.ProductCreator;
 import org.testng.annotations.Test;
@@ -23,14 +27,9 @@ public class OrderTests extends BaseTest{
         ProductPage product = homePage.selectProduct(expectedProduct.getName());
         CartPage cartPage = product.addToCart();
 
-        CheckoutEntryPage checkoutEntryPage = cartPage.clickCheckout();
-        GuestCheckoutFormPage guestCheckoutFormPage = checkoutEntryPage.selectGuestCheckoutAndContinue();
-
+        CheckoutFacade checkoutFacade = new CheckoutFacade(driver);
         GuestCheckoutInfo guestInfo = GuestCheckoutInfoCreator.withDefaultInfo();
-        guestCheckoutFormPage.fillCheckoutForm(guestInfo);
-
-        CheckoutConfirmationPage checkoutConfirmationPage = guestCheckoutFormPage.clickContinue();
-        OrderCompletedPage orderCompletedPage = checkoutConfirmationPage.clickConfirmOrder();
+        OrderCompletedPage orderCompletedPage = checkoutFacade.completeGuestCheckout(guestInfo);
 
         String confirmationMessage = orderCompletedPage.getMessage();
 

@@ -1,6 +1,6 @@
 package com.automationteststore.components;
 
-import com.automationteststore.core.BaseComponent;
+import com.automationteststore.core.base.BaseComponent;
 import com.automationteststore.pages.CartPage;
 import com.automationteststore.pages.LoginPage;
 import org.apache.logging.log4j.LogManager;
@@ -33,8 +33,7 @@ public class HeaderComponent extends BaseComponent {
     }
 
     public boolean isUserLoggedIn() {
-        String href = find(By.cssSelector("#customer_menu_top a"))
-                .getAttribute("href");
+        String href = find(By.cssSelector("#customer_menu_top a")).getAttribute("href");
         return href.contains("account/account");
     }
 }
