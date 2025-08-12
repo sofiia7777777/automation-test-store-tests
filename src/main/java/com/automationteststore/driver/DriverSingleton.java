@@ -1,4 +1,5 @@
 package com.automationteststore.driver;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,25 +9,35 @@ public class DriverSingleton {
 
     private static WebDriver driver;
 
-    private DriverSingleton(){}
+    private DriverSingleton() {
+    }
 
-    public static WebDriver getDriver(){
-        if (null == driver){
-            switch (System.getProperty("browser")){
+    public static WebDriver getDriver() {
+        if (null == driver) {
+            String browser = System.getProperty("browser");
+
+            if (browser == null) {
+                throw new IllegalStateException("Browser type is not specified!");
+            }
+
+            switch (browser) {
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
                     break;
-                default:
+                case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unsupported browser: " + browser);
             }
             driver.manage().window().maximize();
         }
         return driver;
     }
 
-    public static void closeDriver(){
+    public static void closeDriver() {
         driver.quit();
         driver = null;
     }

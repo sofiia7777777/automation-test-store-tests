@@ -1,6 +1,7 @@
-package com.automationteststore.core;
+package com.automationteststore.pages;
 
 import com.automationteststore.components.HeaderComponent;
+import com.automationteststore.core.BaseUIObject;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage extends BaseUIObject {
