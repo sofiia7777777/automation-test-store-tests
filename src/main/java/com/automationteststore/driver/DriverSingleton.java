@@ -10,6 +10,11 @@ public class DriverSingleton {
     public static WebDriver getDriver(){
         if (null == driver){
             String browser = System.getProperty("browser");
+
+            if (browser == null) {
+                throw new IllegalStateException("Browser type is not specified!");
+            }
+
             driver = BrowserFactory.createDriver(browser);
             driver.manage().window().maximize();
         }

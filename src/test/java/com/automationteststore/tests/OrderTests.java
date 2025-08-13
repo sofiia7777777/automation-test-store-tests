@@ -25,7 +25,7 @@ public class OrderTests extends BaseTest{
         homePage.selectSubCategory(expectedProduct.getSubCategory());
 
         ProductPage product = homePage.selectProduct(expectedProduct.getName());
-        CartPage cartPage = product.addToCart();
+        product.addToCart();
 
         CheckoutFacade checkoutFacade = new CheckoutFacade(driver);
         GuestCheckoutInfo guestInfo = GuestCheckoutInfoCreator.withDefaultInfo();

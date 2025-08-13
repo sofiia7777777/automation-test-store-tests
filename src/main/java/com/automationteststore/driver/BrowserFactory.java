@@ -12,9 +12,11 @@ public class BrowserFactory {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 return new FirefoxDriver();
-            default:
+            case "chrome":
                 WebDriverManager.chromedriver().setup();
                 return new ChromeDriver();
+            default:
+                throw new IllegalArgumentException("Unsupported browser: " + browser);
         }
     }
 }
