@@ -1,5 +1,7 @@
 package com.automationteststore.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class GuestCheckoutInfo {
     private final String firstName;
     private final String lastName;
@@ -10,9 +12,14 @@ public class GuestCheckoutInfo {
     private final String zipCode;
     private final String country;
 
-    public GuestCheckoutInfo(String firstName, String lastName, String email,
-                             String address, String city, String zipCode,
-                             String region, String country) {
+    public GuestCheckoutInfo(@JsonProperty("firstName") String firstName,
+                             @JsonProperty("lastName") String lastName,
+                             @JsonProperty("email") String email,
+                             @JsonProperty("address") String address,
+                             @JsonProperty("city") String city,
+                             @JsonProperty("zipCode") String zipCode,
+                             @JsonProperty("region") String region,
+                             @JsonProperty("country") String country) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

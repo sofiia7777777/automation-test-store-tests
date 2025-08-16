@@ -1,15 +1,14 @@
 package com.automationteststore.service;
 
 import com.automationteststore.model.User;
+import com.automationteststore.utils.CredentialsProvider;
 
 public class UserCreator {
-    public static final String TESTDATA_USER_NAME = "testdata.user.name";
-    public static final String TESTDATA_USER_PASSWORD = "testdata.user.password";
 
-    public static User withCredentialsFromProperty() {
+    public static User withCredentialsFromEnvironment() {
         return new User(
-                TestDataReader.getTestData(TESTDATA_USER_NAME),
-                TestDataReader.getTestData(TESTDATA_USER_PASSWORD)
+                CredentialsProvider.getUsername(),
+                CredentialsProvider.getPassword()
         );
     }
 }

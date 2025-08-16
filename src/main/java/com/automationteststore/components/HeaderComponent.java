@@ -1,6 +1,5 @@
 package com.automationteststore.components;
 
-import com.automationteststore.core.base.BaseComponent;
 import com.automationteststore.pages.CartPage;
 import com.automationteststore.pages.LoginPage;
 import org.apache.logging.log4j.LogManager;

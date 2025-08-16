@@ -1,0 +1,22 @@
+{
+  "James": {
+    "firstName": "James",
+    "lastName": "Smith",
+    "email": "james@example.com",
+    "address": "123 Main St",
+    "city": "Bristol",
+    "region": "Bristol",
+    "zipCode": "444117",
+    "country": "United Kingdom"
+  },
+  "Thomas": {
+    "firstName": "Thomas",
+    "lastName": "Johnson",
+    "email": "thomas@example.com",
+    "address": "456 Market Street",
+    "city": "Manchester",
+    "region": "Greater Manchester",
+    "zipCode": "M1 1AE",
+    "country": "United Kingdom"
+  }
+}

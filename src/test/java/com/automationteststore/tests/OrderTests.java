@@ -4,11 +4,8 @@ import com.automationteststore.facades.CheckoutFacade;
 import com.automationteststore.model.GuestCheckoutInfo;
 import com.automationteststore.model.Product;
 import com.automationteststore.pages.*;
-import com.automationteststore.pages.checkout.CheckoutConfirmationPage;
-import com.automationteststore.pages.checkout.CheckoutEntryPage;
-import com.automationteststore.pages.checkout.GuestCheckoutFormPage;
 import com.automationteststore.pages.checkout.OrderCompletedPage;
-import com.automationteststore.service.GuestCheckoutInfoCreator;
+import com.automationteststore.service.GuestCheckoutInfoReader;
 import com.automationteststore.service.ProductCreator;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -28,7 +25,7 @@ public class OrderTests extends BaseTest{
         product.addToCart();
 
         CheckoutFacade checkoutFacade = new CheckoutFacade(driver);
-        GuestCheckoutInfo guestInfo = GuestCheckoutInfoCreator.withDefaultInfo();
+        GuestCheckoutInfo guestInfo = GuestCheckoutInfoReader.getUserCheckoutInfo();
         OrderCompletedPage orderCompletedPage = checkoutFacade.completeGuestCheckout(guestInfo);
 
         String confirmationMessage = orderCompletedPage.getMessage();

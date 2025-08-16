@@ -1,6 +1,6 @@
 package com.automationteststore.pages.checkout;
 
-import com.automationteststore.core.base.BasePage;
+import com.automationteststore.pages.BasePage;
 import com.automationteststore.model.GuestCheckoutInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

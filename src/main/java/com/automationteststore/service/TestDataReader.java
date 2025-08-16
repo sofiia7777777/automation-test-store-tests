@@ -8,4 +8,8 @@ public class TestDataReader {
     public static String getTestData(String key){
         return resourceBundle.getString(key);
     }
+
+    public static int getIntTestData(String key) {
+        return Integer.parseInt(getTestData(key));
+    }
 }

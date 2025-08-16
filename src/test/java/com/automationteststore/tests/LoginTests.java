@@ -16,7 +16,7 @@ public class LoginTests extends BaseTest{
         HeaderComponent header = homePage.getHeaderComponent();
         LoginPage loginPage = header.clickLoginOrRegister();
 
-        User testUser = UserCreator.withCredentialsFromProperty();
+        User testUser = UserCreator.withCredentialsFromEnvironment();
         loginPage.login(testUser);
 
         String welcomeMessage = header.getWelcomeMessage();

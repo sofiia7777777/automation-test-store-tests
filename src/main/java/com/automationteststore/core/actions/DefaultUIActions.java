@@ -1,5 +1,6 @@
 package com.automationteststore.core.actions;
 
+import com.automationteststore.utils.WaitConfig;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -10,9 +11,9 @@ import java.time.Duration;
 
 public class DefaultUIActions implements UIActions{
     private WebDriver driver;
-    private static final int DEFAULT_TIMEOUT = 7;
-    private static final int FLUENT_WAIT_TIMEOUT = 15;
-    private static final int FLUENT_WAIT_POLLING = 500;
+    private static final int DEFAULT_TIMEOUT = WaitConfig.getDefaultTimeout();
+    private static final int FLUENT_WAIT_TIMEOUT = WaitConfig.getFluentWaitTimeout();
+    private static final int FLUENT_WAIT_POLLING = WaitConfig.getFluentWaitPolling();
 
     public DefaultUIActions(WebDriver driver) {
         this.driver = driver;
