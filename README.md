@@ -1,18 +1,21 @@
-## module-10-improvements branch
+# Project Overview
 
-This branch should be considered as the improved version of `module-10-design-patterns` and contains cleaner, more secure, and more maintainable code.
+This project extends the code from branch `module-10-improvements` by integrating Cucumber-JVM for BDD-style test automation. It includes Gherkin scenarios with `Scenario Outline`, `Examples`, and `Background` keywords. Step classes use **PicoContainer** for dependency management across scenarios.
 
-The main enhancements include:
 
-- **Wait configuration externalized**
-   - Timeout values were moved to property files for two environments: `dev` and `qa`.
-   - A new class `WaitConfig` was introduced to provide access to these timeout values across the framework.
+## Features
 
-- **Guest checkout test data management**
-   - A new JSON file `checkoutData.json` was added to store information required for guest checkout scenarios.
-   - A new class `GuestCheckoutInfoReader` was implemented to read and deserialize this JSON content into Java objects.
+- **Scenario Outline & Examples**  
+  Allows parametrized testing using `Scenario Outline` and `Examples:` in Gherkin feature files.
 
-- **Improved security for credentials**
-   - Usernames and passwords were removed from property files.
-   - Sensitive data is now provided via **environment variables**.
-   - A dedicated class `CredentialsProvider` was introduced to safely retrieve the username and password when needed.
+- **Background Steps**  
+  Recurrent preconditions are implemented using the `Background` keyword to reduce duplication in feature files.
+
+- **Step Definition Flexibility**  
+  Uses **regular expressions** in step definitions to capture dynamic test data efficiently.
+
+- **Common Step Definitions**  
+  Implements a `CommonStepDefinitions` class to share reusable steps across multiple scenarios.
+
+- **Dependency Injection with PicoContainer**  
+  Step classes use **PicoContainer** to manage dependencies and maintain shared state safely without relying on static fields.
