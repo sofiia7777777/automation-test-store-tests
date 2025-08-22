@@ -5,7 +5,6 @@ import com.automationteststore.model.User;
 import com.automationteststore.pages.HomePage;
 import com.automationteststore.pages.LoginPage;
 import com.automationteststore.service.UserCreator;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.asserts.SoftAssert;
@@ -27,7 +26,7 @@ public class LoginStepDefinitions {
         loginPage = header.clickLoginOrRegister();
     }
 
-    @And("I login with valid credentials")
+    @When("I login with valid credentials")
     public void iLoginWithValidCredentials() {
         User testUser = UserCreator.withCredentialsFromEnvironment();
         loginPage.login(testUser);
@@ -40,7 +39,7 @@ public class LoginStepDefinitions {
         softAssert.assertEquals(welcomeMessage, "Welcome back " + testUser.getUsername(), "The Welcome Message is incorrect");
     }
 
-    @And("I should be logged in")
+    @Then("I should be logged in")
     public void iShouldBeLoggedIn() {
         softAssert.assertTrue(header.isUserLoggedIn(), "User is not logged in");
         softAssert.assertAll();

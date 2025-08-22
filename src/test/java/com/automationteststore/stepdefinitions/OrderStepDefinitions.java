@@ -6,8 +6,8 @@ import com.automationteststore.model.GuestCheckoutInfo;
 import com.automationteststore.pages.HomePage;
 import com.automationteststore.pages.checkout.OrderCompletedPage;
 import com.automationteststore.service.GuestCheckoutInfoReader;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
 
@@ -24,19 +24,19 @@ public class OrderStepDefinitions {
         this.driver = commonSteps.getDriver();
     }
 
-    @And("I proceed to checkout as guest")
+    @When("I proceed to checkout as guest")
     public void iProceedToCheckoutAsGuest() {
         HeaderComponent header = homePage.getHeaderComponent();
         header.clickCart();
         checkoutFacade = new CheckoutFacade(driver);
     }
 
-    @And("I provide guest information")
+    @When("I provide guest information")
     public void iProvideGuestInformation() {
         guestInfo = GuestCheckoutInfoReader.getUserCheckoutInfo();
     }
 
-    @And("I confirm the order")
+    @When("I confirm the order")
     public void iConfirmTheOrder() {
         orderCompletedPage = checkoutFacade.completeGuestCheckout(guestInfo);
     }

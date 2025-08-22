@@ -3,7 +3,6 @@ package com.automationteststore.stepdefinitions;
 import com.automationteststore.components.HeaderComponent;
 import com.automationteststore.pages.CartPage;
 import com.automationteststore.pages.HomePage;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.testng.asserts.SoftAssert;
 
@@ -24,7 +23,7 @@ public class CartStepDefinitions {
         softAssert.assertEquals(actualTitle, expectedTitle, "The Product Title is incorrect");
     }
 
-    @And("^the product price should be (\\$[0-9]+\\.[0-9]{2})$")
+    @Then("^the product price should be (\\$[0-9]+\\.[0-9]{2})$")
     public void theProductPriceShouldBe(String expectedPrice) {
         String actualPrice = cartPage.getProductPrice();
         softAssert.assertEquals(actualPrice, expectedPrice, "The Product Price is incorrect");

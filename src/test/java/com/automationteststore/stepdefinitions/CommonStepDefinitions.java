@@ -3,7 +3,6 @@ package com.automationteststore.stepdefinitions;
 import com.automationteststore.hooks.Hooks;
 import com.automationteststore.pages.HomePage;
 import com.automationteststore.pages.ProductPage;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
@@ -27,12 +26,12 @@ public class CommonStepDefinitions {
         homePage.selectSubCategory(subCategory);
     }
 
-    @And("I select the product {string}")
+    @When("I select the product {string}")
     public void iSelectTheProduct(String productName) {
         productPage = homePage.selectProduct(productName);
     }
 
-    @And("I add the product to the cart")
+    @When("I add the product to the cart")
     public void iAddTheProductToTheCart() {
         productPage.addToCart();
     }
